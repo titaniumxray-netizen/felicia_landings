@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Studio • Synaptic Cinematic</title>
+
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <header class="topbar">
+    <div class="wrap">
+      <div class="brand">Studio<span class="dot">.</span></div>
+      <nav class="nav">
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section with Parallax -->
+    <section id="home" class="hero">
+      <div class="layer bg-stars" data-speed="0.08" aria-hidden="true"></div>
+      <div class="layer bg-mid" data-speed="0.22" aria-hidden="true"></div>
+      <div class="layer overlay" data-speed="0.42" aria-hidden="true"></div>
+
+      <div class="hero-inner wrap">
+        <div class="hero-copy">
+          <h1 class="cinematic">We craft light.<br>We freeze feeling.</h1>
+          <p class="sub">Synaptic black & white photography — weddings, portraits, editorial.</p>
+          <div class="hero-cta">
+            <button class="btn btn-black" onclick="scrollToAnchor('gallery')">View Gallery</button>
+            <button class="btn btn-outline" onclick="scrollToAnchor('contact')">Book a Session</button>
+          </div>
+        </div>
+
+        <div class="hero-image" id="heroPreview" aria-hidden="true">
+          <!-- Dynamic image will be loaded here -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="section">
+      
+        <h2 class="title">Gallery</h2>
+        <p class="muted">Selected works — dynamically loaded from Unsplash.</p>
+        <div id="galleryGrid" class="gallery-grid" aria-live="polite">
+          <!-- Dynamic gallery images will be loaded here -->
+        </div>
+      
+    </section>
+
+<!-- Services Section -->
+<section id="services" class="services-section alt">
+    <div class="wrap1">
+        <h2 class="section-title">Services & Pricing</h2>
+        <p class="section-subtitle">Professional photography packages tailored to your needs</p>
+        
+        <div class="services-grid">
+            <!-- Portrait Session Card -->
+            <div class="service-card" onclick="selectPackage('Portrait Session', '₦30,000')">
+                <div class="service-header">
+                    <h3 class="service-title">Portrait Session</h3>
+                    <div class="service-price">₦30,000</div>
+                </div>
+                <div class="service-details">
+                    <p class="service-description">
+                        Perfect for individuals, couples, or small groups. Capture authentic moments in stunning black & white.
+                    </p>
+                    <ul class="service-features">
+                        <li>1 hour professional photoshoot</li>
+                        <li>10 expertly retouched images</li>
+                        <li>Fast 3-5 day delivery</li>
+                        <li>Online gallery access</li>
+                    </ul>
+                    <div class="select-hint">Select Package →</div>
+                </div>
+            </div>
+
+            <!-- Event/Wedding Card -->
+            <div class="service-card featured" onclick="selectPackage('Event / Wedding', 'Starts at ₦120,000')">
+                <div class="service-header">
+                    <h3 class="service-title">Event / Wedding</h3>
+                    <div class="service-price">Starts at ₦120,000</div>
+                </div>
+                <div class="service-details">
+                    <p class="service-description">
+                        Comprehensive coverage for your special day. Cinematic storytelling in timeless black & white.
+                    </p>
+                    <ul class="service-features">
+                        <li>From 4 hours coverage</li>
+                        <li>Full gallery of images</li>
+                        <li>Professional prints available</li>
+                        <li>Online gallery + USB delivery</li>
+                        <li>Premium editing & retouching</li>
+                    </ul>
+                    <div class="select-hint">Select Package →</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+      
+        <h2 class="title">About</h2>
+        <p class="muted">Boutique studio focusing on mood, light, and storytelling — cinematic results you feel.</p>
+      
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section alt">
+      <div class="contact-wrap">
+        <!-- Contact Info -->
+        <div class="contact-left">
+          <h2 class="title">Let's talk</h2>
+          <p class="muted">Tell us about your shoot — we reply rapidly.</p>
+          
+          <div class="contact-info">
+            <div><strong>Email</strong> hello@studio.example</div>
+            <div><strong>WhatsApp</strong> +234 800 000 000</div>
+          </div>
+          
+          <!-- Selected Package Display -->
+          <div id="selectedPackage" class="selected-package" style="display: none;">
+            <h4>Selected Package</h4>
+            <div id="packageDetails"></div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-form">
+          <div class="form-group">
+            <input id="name" placeholder="Your name" required />
+          </div>
+          
+          <div class="form-group">
+            <input id="email" type="email" placeholder="Email or WhatsApp" required />
+          </div>
+          
+          <div class="form-group">
+            <input id="subject" placeholder="Subject (Wedding / Portrait)" />
+          </div>
+          
+          <div class="form-group">
+            <textarea id="message" placeholder="Describe your shoot..." rows="5"></textarea>
+          </div>
+          
+          <button class="contact-btn btn-black" onclick="submitContact()">
+            Send message via Email
+          </button>
+          
+          <div id="contactResult" class="muted"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Floating Assistant -->
+  <div id="assistant" class="assistant" aria-label="Studio assistant" title="Studio assistant (drag me!)">
+    <div class="assistant-face">📸</div>
+  </div>
+
+  <!-- Chat Panel -->
+  <div id="chatPanel" class="chat-panel" aria-hidden="true">
+    <div class="chat-header">
+      <div class="chat-header-content">
+        <div class="who">Studio Assistant</div>
+        <div class="hint">Ask about pricing, booking, or availability</div>
+      </div>
+      <button class="close" onclick="toggleChat(false)" aria-label="Close chat">✕</button>
+    </div>
+    <div id="chatBody" class="chat-body">
+      <div class="msg bot">Hello! I'm the studio assistant — I can help with booking and pricing. Try: "How much for a portrait?"</div>
+    </div>
+    <div class="chat-input">
+      <input id="chatInput" placeholder="Type a message..." />
+      <button class="btn btn-black" onclick="sendChat()">Send</button>
+    </div>
+  </div>
+
+<script src="/script.js"></script>
+</body>
+</html>
